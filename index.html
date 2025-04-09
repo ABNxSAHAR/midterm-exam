@@ -165,10 +165,17 @@
   </div>
   <h1>10th Grade Midterm Exam</h1>
 
-  <div class="header-fields">
-    <input type="text" name="student_name" id="studentName" placeholder="Student Name" required />
-    <input type="date" name="exam_date" id="examDate" required />
+  <div class="header-fields" style="flex-direction: column; gap: 10px;">
+  <div style="width: 100%;">
+    <label for="studentName" style="font-size: 18px; font-weight: bold;">Student Name</label>
+    <input type="text" name="student_name" id="studentName" required style="width: 100%; font-size: 18px; padding: 12px; height: 48px; border: 1px solid #999; border-radius: 6px;" />
   </div>
+  <div style="width: 100%;">
+    <label for="examDate" style="font-size: 18px; font-weight: bold;">Date</label>
+    <input type="date" name="exam_date" id="examDate" required style="width: 100%; font-size: 18px; padding: 12px; height: 48px; border: 1px solid #999; border-radius: 6px;" />
+  </div>
+</div>
+
 
   <button id="startBtn">Start Exam</button>
 
