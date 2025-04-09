@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Midterm Exam</title>
+  <style>
+    body {
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .paper {
+      background: white;
+      width: 794px; /* A4 width */
+      min-height: 1123px; /* A4 height */
+      padding: 40px 60px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+
+    #exam, #timer {
+      display: none;
+    }
+
+    .lined-textarea {
+  border: none;
+  border-bottom: 1px solid #999;
+  background: repeating-linear-gradient(
+    white,
+    white 25px,
+    #ccc 26px
+  );
+  line-height: 26px;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  resize: none;
+}
+
+
+    .question {
+      margin-bottom: 10px;
+    }
+
+    #startBtn {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #submitMsg {
+      color: green;
+      font-weight: bold;
+      display: none;
+      margin-top: 20px;
+    }
+
+    .header-fields {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .header-fields input {
+      width: 48%;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    #timer {
+      text-align: right;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .paper {
+    width: 100%;
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+.header-fields input {
+  width: 100%;
+  font-size: 20px;
+  padding: 12px;
+  height: 50px;
+}
+
+
+  .header-fields input {
+    width: 100%;
+  }
+
+  textarea {
+    font-size: 14px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  #startBtn, #printBtn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  #timer {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+  </style>
+
+  <!-- Firebase App + Database -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCBhgQgsYm4gLr2KQWDX6edxzznr_B8gDg",
+    authDomain: "midterm-exam-project-870bb.firebaseapp.com",
+    databaseURL: "https://midterm-exam-project-870bb-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "midterm-exam-project-870bb",
+    storageBucket: "midterm-exam-project-870bb.firebasestorage.app",
+    messagingSenderId: "269373575139",
+    appId: "1:269373575139:web:8fa56a0366b43619519ad6"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+</script>
+
+</head>
+<body>
+
+<div class="paper">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="s1.jpg" alt="School Logo" style="max-width: 150px; height: auto;">
+  </div>
+  <h1>10th Grade Midterm Exam</h1>
+
+  <div class="header-fields">
+    <input type="text" name="student_name" id="studentName" placeholder="Student Name" required />
+    <input type="date" name="exam_date" id="examDate" required />
+  </div>
+
+  <button id="startBtn">Start Exam</button>
+
+  <div id="timer"><strong>Time Left: <span id="countdown">15:00</span></strong></div>
+
+ 
+    <form id="exam">
+      <h2>Q1. Read And Answer (7 Marks)</h2>
+      <p>
+        <strong></strong><br>
+        Palestine is the land of great beauty and geographical variety lies at the crossroad of Asia and Africa and has therefore always been meeting point of different societies and cultures.<br>
+        Jerusalem is the jewel of Palestine holy to three great monotheistic religions. Islam Christianity and Judaism. At the heart of the old city is the Dome of the Rock this holy place was built where prophet Mohammad ascended to Heaven. The great golden dome was built by Ummayad Caliph Abdul Malik Ibn Marwan in AD 692. It rises 35 meters above the Nobel Rock and this holy place has been visited by millions over the years.
+      </p>
+    
+      <h3>(A)</h3>
+      <div class="question">1. Where was the Dome of the Rock built?</div>
+      <textarea name="q1_1"></textarea>
+    
+      <div class="question">2. What is the height of the Dome?</div>
+      <textarea name="q1_2"></textarea>
+    
+      <div class="question">3. Where does Palestine lie?</div>
+      <textarea name="q1_3"></textarea>
+    
+      <h3>(B) Read and put True or False:</h3>
+
+<div class="question">
+  1. Jerusalem isn't a holy place to the three monotheistic religions.<br>
+  <label><input type="radio" name="q1_b1" value="True" > True</label>
+  <label><input type="radio" name="q1_b1" value="False" > False</label>
+</div>
+
+<div class="question">
+  2. The golden Dome was built by Marwan Ibn Abdl Malik.<br>
+  <label><input type="radio" name="q1_b2" value="True" > True</label>
+  <label><input type="radio" name="q1_b2" value="False" > False</label>
+</div>
+
+    
+      <h2>Q2. Vocabulary – Give the meaning of the words (3 Marks)</h2>
+      <div class="question">1. Accend</div>
+      <textarea name="vocab1"></textarea>
+    
+      <div class="question">2. Archaeological</div>
+      <textarea name="vocab2"></textarea>
+    
+      <div class="question">3. High-tech</div>
+      <textarea name="vocab3"></textarea>
+    
+      <div class="question">4. Wheelchair</div>
+      <textarea name="vocab4"></textarea>
+    
+      <div class="question">5. Anxious(ly)</div>
+      <textarea name="vocab5"></textarea>
+    
+      <div class="question">6. Rapid(ly)</div>
+      <textarea name="vocab6"></textarea>
+    
+      <h2>Q3. Language – Passive Voice (6 Marks)</h2>
+      <h3>(A) Change these active sentences into passive:</h3>
+    
+      <div class="question">1. Ali sends emails to Ahmad every day.</div>
+      <textarea name="passive1"></textarea>
+    
+      <div class="question">2. Egypt's rulers built the Great Pyramids 4,500 years ago.</div>
+      <textarea name="passive2"></textarea>
+    
+      <div class="question">3. The farmer has watered the plants.</div>
+      <textarea name="passive3"></textarea>
+    
+      <div class="question">4. They had not looked after it.</div>
+      <textarea name="passive4"></textarea>
+    
+      <div class="question">5. The workers are painting the bridge.</div>
+      <textarea name="passive5"></textarea>
+    
+      <div class="question">6. They were watching the videos.</div>
+      <textarea name="passive6"></textarea>
+    
+      <h3>(B) Change the following sentences to reported speech (9 Marks):</h3>
+    
+      <div class="question">1. "It will continue", he said.</div>
+      <textarea name="report1"></textarea>
+    
+      <div class="question">2. "Science is helping people", he said.</div>
+      <textarea name="report2"></textarea>
+    
+      <div class="question">3. "It can understand", she said.</div>
+      <textarea name="report3"></textarea>
+    
+      <div class="question">4. "Disabled athletes have recently started using artificial legs", we said.</div>
+      <textarea name="report4"></textarea>
+    
+      <div class="question">5. "I don’t love my ball", Lara said.</div>
+      <textarea name="report5"></textarea>
+    
+      <div class="question">6. "You must leave early with me", Lara told Arafat.</div>
+      <textarea name="report6"></textarea>
+    
+      <div class="question">7. "I had bad time", Sara told Ahmad.</div>
+      <textarea name="report7"></textarea>
+    
+      <div class="question">8. "We make our party good", Girls said.</div>
+      <textarea name="report8"></textarea>
+    
+      <div class="question">9. "Are you free?", Samar asks.</div>
+      <textarea name="report9"></textarea>
+    
+      <h2>Q4. Writing – Complete the letter (5 Marks)</h2>
+
+          <!-- ✅ صندوق يحتوي معلومات الرسالة -->
+          <div style="border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; margin-bottom: 20px;">
+            <strong>Letter Info:</strong><br>
+            Palestine -  9 April - 4, Al Zahra street - Jerusalem - National Hotel Jerusalem - PS I’ll have lots of photos to show you when I get home - Dear Farah - love and best wishes - Ahmad – Dad and I have been invited to an evening – I must stop now -
+          </div>
+
+          <!-- ✅ خانة لبداية الرسالة -->
+          <div class="question">Start writing your letter here:</div>
+          <textarea name="letter_intro" class="lined-textarea" rows="4" placeholder=""></textarea>
+
+          <!-- ✅ نص ثابت في منتصف الرسالة -->
+          <p style="font-style: italic; margin-top: 10px;">
+            How are you? I hope you’re well, and that the weather isn’t too cold.<br>
+            Dad and I are both fine, and we are busy travelling around Palestine for a few days.
+          </p>
+          
+
+          <textarea name="letter_body1" class="lined-textarea" rows="4" placeholder=""></textarea>
+
+      <div style="text-align: right; margin-top: 30px;">
+        <button type="button" onclick="finishExam()" style="padding: 10px 20px; font-size: 16px; background-color: #d32f2f; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Finish Exam
+        </button>
+      </div>
+      <p><strong>Good Luck<br>Teacher – Rahaf Salah</strong></p>
+    </form>
+
+    <div id="submitMsg">⏰ Time is up! Your answers have been saved.</div>
+
+    
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const exam = document.getElementById("exam");
+  const timer = document.getElementById("timer");
+  const countdown = document.getElementById("countdown");
+  const submitMsg = document.getElementById("submitMsg");
+
+  let timeLeft = 15 * 60;
+  let timerInterval;
+
+  startBtn.onclick = () => {
+    const name = document.getElementById("studentName").value.trim();
+    if (name === "") {
+      alert("Please enter your name before starting the exam.");
+      return;
+    }
+    startBtn.style.display = "none";
+    exam.style.display = "block";
+    timer.style.display = "block";
+    startTimer();
+  };
+
+  function startTimer() {
+    updateTimerDisplay();
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      updateTimerDisplay();
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        finishExam();
+      }
+    }, 1000);
+  }
+
+  function updateTimerDisplay() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    countdown.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  }
+
+  function finishExam() {
+  const formData = new FormData(document.getElementById("exam"));
+  const name = document.getElementById("studentName").value || "Anonymous";
+  const date = document.getElementById("examDate").value || new Date().toISOString().split('T')[0];
+
+  let answers = {};
+  for (const [question, answer] of formData.entries()) {
+    answers[question] = answer;
+  }
+
+  const studentData = {
+    name: name,
+    date: date,
+    answers: answers,
+    submittedAt: new Date().toISOString()
+  };
+
+  // Push data to Firebase
+  firebase.database().ref("submissions").push(studentData)
+    .then(() => {
+      document.getElementById("exam").querySelectorAll("textarea").forEach(t => t.disabled = true);
+      document.getElementById("submitMsg").style.display = "block";
+    })
+    .catch((error) => {
+      alert("There was an error submitting your exam: " + error.message);
+    });
+
+  clearInterval(timerInterval);
+}
+
+</script>
+
+</body>
+</html>
