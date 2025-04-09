@@ -11,6 +11,18 @@
       padding: 40px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+    textarea {
+  width: 100%;
+  height: 120px; /* حجم أكبر */
+  margin-bottom: 15px;
+  resize: none; /* يمنع تغيير الحجم */
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px;
+  overflow-y: auto; /* سكرول داخلي إذا كتبوا كتير */
+  box-sizing: border-box;
+}
+
 
     .paper {
       background: white;
@@ -330,7 +342,7 @@
   const countdown = document.getElementById("countdown");
   const submitMsg = document.getElementById("submitMsg");
 
-  let timeLeft = 15 * 60;
+  let timeLeft = 60 * 60;
   let timerInterval;
 
   startBtn.onclick = () => {
